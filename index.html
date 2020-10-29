@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button onclick="handleProductChange('phone', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="phone-count" type="text" class="form-control text-center" value="1">
+                           <button onclick="handleProductChange('phone', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5 id="phone-prize">$1219</h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button onclick="handleProductChange('case', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="case-count" type="text" class="form-control text-center" value="1">
+                           <button   onclick="handleProductChange('case', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5 id="case-prize">$59</h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5 id="subtotal-prize">$1,278</h5>
+                        <h5 id="tax-amount">$0</h5>
+                        <h5 id="total-amount">$1,278</h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+
+   <script>
+      
+            // =>>PHONE ARIA<<=
+
+      //       function handlePhoneChange (phoneIncrease){
+      //    const phoneInput = document.getElementById('phone-count');
+      //    const phoneCount = parseInt(phoneInput.value);
+      //    let phoneAdd = phoneCount;
+      //    if(phoneIncrease == true){
+      //       phoneAdd = phoneCount + 1;
+      //    }
+      //    if(phoneIncrease == false && phoneAdd > 0){
+      //       phoneAdd = phoneCount - 1;
+      //    }
+      //    phoneInput.value = phoneAdd;
+      //    const phonePrize = phoneAdd * 1219;
+      //    document.getElementById('phone-prize').innerText = '$' + phonePrize;
+      // }
+
+
+            // =>>case explain aria<<=
+
+      // document.getElementById('case-plus').addEventListener('click', function(){
+      //    const caseInput = document.getElementById('case-count');
+      //    const caseCount = parseInt(caseInput.value);
+      //    const caseAdd = caseCount + 1;
+      //    caseInput.value = caseAdd;
+      //    const casePrize = caseAdd * 59;
+      //    document.getElementById('case-prize').innerText = '$' + casePrize;
+      // });
+
+      
+      // document.getElementById('case-minus').addEventListener('click', function(){
+      //    const caseInput = document.getElementById('case-count');
+      //    const caseCount = parseInt(caseInput.value);
+      //    const caseAdd = caseCount - 1;
+      //    caseInput.value = caseAdd;
+      //    const casePrize = caseAdd * 59;
+      //    document.getElementById('case-prize').innerText = '$' + casePrize;
+      // });
+
+
+      // =>>(oprer gula k funtion a conbut)<<=
+
+      // document.getElementById('case-plus').addEventListener('click', function(){
+      //    handleChange(true);
+      // })
+
+
+      // document.getElementById('case-minus').addEventListener('click', function(){
+      //    handleChange(false);
+      // })
+
+      // =>> ai 2 liner kaj sorasori button kora hoisa<<=
+
+            // =>>CASE main ARIA<<=
+
+      // function handleChange (isIncrease){
+      //    const caseInput = document.getElementById('case-count');
+      //    const caseCount = parseInt(caseInput.value);
+      //    // const caseAdd = caseCount - 1;
+      //    let caseAdd = caseCount;
+      //    if(isIncrease == true){
+      //       caseAdd = caseCount + 1;
+      //    }
+      //    if(isIncrease == false && caseAdd > 0){
+      //       caseAdd = caseCount - 1;
+      //    }
+      //    caseInput.value = caseAdd;
+      //    const casePrize = caseAdd * 59;
+      //    document.getElementById('case-prize').innerText = '$' + casePrize;
+      // }
+
+
+         // =>>phone & case ar funtion k 1ta funtion a conbut<<=
+
+
+      function handleProductChange(product, isIncrease){
+         const productInput = document.getElementById(product + '-count');
+         const productCount = parseInt(productInput.value);
+         // const caseAdd = caseCount - 1;
+         let productAdd =  productCount;
+         if(isIncrease == true){
+            productAdd =  productCount + 1;
+         }
+         if(isIncrease == false &&  productAdd > 0){
+            productAdd =  productCount - 1;
+         }
+         productInput.value =  productAdd;
+         // const  productPrize =  productAdd * 59;
+         let productPrize = 0;
+         if(product == 'phone'){
+            productPrize =productAdd * 1219
+         }
+         if(product == 'case'){
+            productPrize = productAdd * 59
+         }
+         document.getElementById( product + '-prize').innerText = '$' + productPrize;
+         handleSubtotal();
+      }
+
+      // =>>subtotal aria<<=
+
+      function handleSubtotal (){
+         const phonePrize = handleProduct('phone');
+
+         const casePrize = handleProduct('case');
+
+         const subtotal = phonePrize * 1219 + casePrize * 59;
+         document.getElementById('subtotal-prize').innerText ='$' + subtotal;
+
+         const tax = Math.round(subtotal * 0.1);
+         document.getElementById('tax-amount').innerText = '$' + tax;
+
+         const total = subtotal + tax;
+         document.getElementById('total-amount').innerText = '$' + total            
+      }
+
+            function handleProduct(product){
+               const productInput = document.getElementById(product + '-count');
+               const productPrize = parseInt(productInput.value);
+               return productPrize
+
+            }
+
+
+
+      
+     
+   </script>
+</body>
+
+</html>
